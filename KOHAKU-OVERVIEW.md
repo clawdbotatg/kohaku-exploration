@@ -1,5 +1,11 @@
 # Kohaku — What the repos are (TLDR)
 
+> **In one line:** Kohaku is privacy plumbing for Ethereum wallets — it lets you move
+> money on Ethereum without it being publicly traceable. The pattern is
+> **shield → send privately → unshield**: deposit funds into a shared pool, then
+> send/withdraw them with zero-knowledge proofs so the activity can't be linked back
+> to you — all wrapped so wallets can drop it in.
+
 Kohaku is the Ethereum Foundation's **privacy-first wallet tooling** effort: a stack of
 libraries plus a reference wallet that bake on-chain privacy (Railgun, Privacy Pools)
 and post-quantum account abstraction directly into Ethereum wallets.
