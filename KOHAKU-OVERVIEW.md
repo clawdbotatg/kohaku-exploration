@@ -110,3 +110,46 @@ scripts/agents. Early stage (v0.0.1, single commit).
 - `kohaku-extension` = the official reference browser wallet using that SDK (EF, Ambire fork).
 - `kohaku-commons` = the Ambire-derived wallet logic the extension stands on (EF).
 - `kohaku-cli` = a third-party CLI wallet that plugs into the same published SDK (community).
+
+---
+
+## How is this different from Tornado Cash?
+
+Big picture: **Tornado Cash is a single mixer dapp; Kohaku is a wallet that builds
+privacy in as a feature** — and the protocols it uses (Railgun, Privacy Pools) are the
+"lessons-learned" next generation of the idea Tornado pioneered. They're technically
+cousins (both use commitments + nullifiers + Merkle trees + zk-SNARKs), but differ on
+almost everything around that core.
+
+| | Tornado Cash | Kohaku |
+|---|---|---|
+| **What it is** | A standalone mixer (contracts + website) | Wallet tooling — privacy embedded *in* the wallet, plugin-based |
+| **Amounts** | Fixed denominations only (0.1 / 1 / 10 / 100 ETH) | Arbitrary amounts; you hold a real private balance |
+| **Capability** | Deposit → withdraw, nothing else | A full private account: shield, **send privately pool-to-pool**, partial spends, unshield |
+| **Assets** | One pool per asset/denomination | Many ERC-20s, native ETH, etc. |
+| **Compliance** | None — all funds commingle | The whole point of the redesign (see below) |
+| **Posture** | Anonymous-ish, immutable, OFAC-sanctioned 2022 | Ethereum Foundation, explicitly compliance-aware |
+
+**The one difference that explains all the others: dissociation from dirty money.**
+Tornado's fatal flaw was that honest users and hackers shared one anonymity set with no
+way to tell them apart — which is exactly why it was sanctioned and its devs prosecuted.
+Kohaku's protocols bake in the fix:
+
+- **Privacy Pools** (born from a Vitalik-coauthored paper reacting to Tornado) uses an
+  **ASP** (Association Set Provider): you can *prove* your withdrawal comes from an
+  approved/clean set of deposits, cryptographically separating yourself from illicit
+  funds while staying private.
+- **Railgun** has **POI** (Proof of Innocence): proving your funds don't descend from
+  blocklisted deposits.
+
+Tornado had no equivalent. That's the headline.
+
+Two smaller notes:
+- Both use **relayers** so your withdrawal isn't paid for by a linkable address — same
+  idea, but Kohaku layers modern account abstraction (ERC-4337 + EIP-7702 + a paymaster)
+  on top.
+- Tellingly, Kohaku's own code treats **Tornado as just the minimal case** of its
+  framework — there's a `packages/plugins/examples/tornado.ts` plugin that models Tornado
+  in the same plugin interface, but with only shield/unshield and *no* private internal
+  transfer. In Kohaku's worldview, Tornado is the simplest version of the general thing
+  they're building.
