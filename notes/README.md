@@ -12,6 +12,7 @@ Start with the architecture overview, then dive into whichever layer you need.
 | 04 | [wallet-extension-and-commons.md](04-wallet-extension-and-commons.md) | The browser wallet (`kohaku-extension`) and its Ambire base (`kohaku-commons`) |
 | 05 | [cli.md](05-cli.md) | `kohaku-cli` — the community terminal wallet, end-to-end flows |
 | 06 | [concepts-and-glossary.md](06-concepts-and-glossary.md) | Railgun, Privacy Pools, POI, ASP, ERC-4337/7702, Poseidon/BabyJubJub, Groth16 — primers + glossary |
+| 07 | [mainnet-demo-and-unshield-blocker.md](07-mainnet-demo-and-unshield-blocker.md) | ⚠️ Real-money mainnet demo: shield works, **unshield is blocked** (CLI's 7702 unshield contracts aren't deployed on mainnet) |
 
 ## The one thing to understand first
 

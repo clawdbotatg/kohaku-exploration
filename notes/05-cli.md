@@ -1,5 +1,10 @@
 # 05 — `kohaku-cli` (kassandraoftroy)
 
+> ⚠️ **MAINNET WARNING:** the CLI defaults to mainnet and will shield **real ETH**,
+> but its Railgun **unshield is broken on mainnet** — the EIP-7702 contracts it
+> requires are testnet-only and undeployed on L1. Shielding on mainnet is a one-way
+> door with this tool. Full writeup: [07-mainnet-demo-and-unshield-blocker.md](07-mainnet-demo-and-unshield-blocker.md).
+
 A ~4k-LOC TypeScript **terminal wallet** by **kassandra.eth** — community, *not*
 the EF org (MIT, copyright "kassandra.eth 2026"; single commit, v0.0.1). It's the
 cleanest demonstration of the note-01 thesis: a thin host that **implements the
