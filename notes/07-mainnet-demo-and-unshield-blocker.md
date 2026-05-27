@@ -1,5 +1,9 @@
 # 07 — Mainnet demo: shield works, unshield is BLOCKED (real-money finding)
 
+> **VERDICT: Kohaku is NOT ready for mainnet.** You can shield real ETH but cannot
+> unshield it with the current tooling — a one-way door. Don't use real funds on
+> mainnet yet.
+
 **Date:** 2026-05-26/27. **Tool:** `kohaku-cli` (kassandraoftroy), run against a
 **local mainnet Ethereum node** (`192.168.68.62:8545`). **Real funds involved.**
 

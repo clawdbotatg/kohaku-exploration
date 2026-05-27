@@ -6,6 +6,25 @@
 > send/withdraw them with zero-knowledge proofs so the activity can't be linked back
 > to you — all wrapped so wallets can drop it in.
 
+## ⚠️ Mainnet readiness: NOT READY — verified the hard way (May 2026)
+
+We ran a **real-money mainnet round-trip** through `kohaku-cli`. The **shield worked**
+(0.01 ETH into Railgun on mainnet). The **unshield is structurally broken on mainnet**:
+the CLI's only Railgun-unshield path depends on EIP-7702 account-abstraction contracts
+(a "Privacy Account" implementation + a paymaster) that **are not deployed on Ethereum
+mainnet** — verified `0x` (no code). Worse, `kohaku-cli` **defaults to mainnet** with
+**no preflight guard**, so it will accept a real deposit into a one-way door. The EF
+repos themselves carry a "work in progress — not ready for production" notice, and the
+browser extension is **Sepolia-testnet only**.
+
+**Bottom line: do not use Kohaku with real funds on mainnet yet.** Shielding works;
+getting back out does not (via this tooling). Funds shielded this way *are* recoverable
+through the official Railgun wallet — the key derivation is byte-compatible — but the
+Kohaku tooling itself cannot complete the round trip on mainnet. Full evidence + tx
+hashes: [notes/07-mainnet-demo-and-unshield-blocker.md](notes/07-mainnet-demo-and-unshield-blocker.md).
+
+---
+
 Kohaku is the Ethereum Foundation's **privacy-first wallet tooling** effort: a stack of
 libraries plus a reference wallet that bake on-chain privacy (Railgun, Privacy Pools)
 and post-quantum account abstraction directly into Ethereum wallets.

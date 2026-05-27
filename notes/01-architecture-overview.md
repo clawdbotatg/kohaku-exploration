@@ -119,7 +119,10 @@ appears on-chain. Note 02 has the Railgun mechanics; note 06 the concepts.
 
 ## Status snapshot (May 2026)
 
-Everything is **alpha**. Headline SDK packages are `0.0.x-alpha.*`. The extension
+Everything is **alpha** — and **not ready for mainnet**: a real-money round-trip
+proved you can shield on mainnet but can't unshield (see
+[07-mainnet-demo-and-unshield-blocker.md](07-mainnet-demo-and-unshield-blocker.md)).
+Headline SDK packages are `0.0.x-alpha.*`. The extension
 is **Sepolia-testnet only**, with some flows stubbed (notably Railgun *withdrawal*
 in the extension UI — `useRailgunForm.ts:~426`). The CLI is a single-commit v0.0.1.
 The pq-account contracts are deployed on Sepolia + Arbitrum Sepolia with a full
