@@ -69,12 +69,23 @@ classic Railgun broadcaster) in the CLI.
 - **Safe, not lost.** 0.01 ETH (as WETH) sits in the Railgun pool under
   spending/viewing keys derived from the demo seed. The failed unshield spent **zero**
   on-chain (rejected pre-submission; deposit EOA dust unchanged at ~0.00096 ETH).
-- **Recovery path (in progress):** the **official Railgun wallet / `@railgun-community/wallet` SDK**
-  unshields on mainnet via Railgun's own relayer/self-relay (no 7702), and can send to
-  any address. **Open question:** kohaku's `derive-railgun-keys` (v0.1.0, built on
-  `@kohaku-eth/railgun` — *not* obviously the official `@railgun-community` derivation)
-  must derive the **same** Railgun wallet, or the official SDK won't see the funds.
-  This compatibility must be verified before relying on it.
+- **Recovery path — derivation compatibility CONFIRMED.** The **official Railgun wallet /
+  `@railgun-community/wallet` SDK** unshields on mainnet via Railgun's own relayer/self-relay
+  (no 7702) and can send to any address. The open question — does kohaku's `derive-railgun-keys`
+  produce the *same* Railgun wallet as official? — is settled **yes**:
+  - kohaku's derivation source (`derive-railgun-keys/dist/utils/bip32.js` + `railgun-node.js`)
+    is **byte-identical** to Railgun's official key derivation: paths `m/44'/1984'/0'/0'/{i}'`
+    (spending) + `m/420'/1984'/0'/0'/{i}'` (viewing), master key `HMAC-SHA512("babyjubjub seed", seed)`,
+    hardened child `HMAC-SHA512(chainCode, 0x00‖chainKey‖index)` — same function names and constants
+    as `@railgun-community/engine`.
+  - The `@kohaku-eth/railgun` type for `spendingKeyPath`/`viewingKeyPath` **explicitly cites**
+    `Railgun-Community/engine/.../key-derivation/wallet-node.ts#L17`.
+  - Empirically, kohaku's keys already located + proved spendable notes in the **real** mainnet
+    Railgun pool (post-POI), which only works with Railgun's real key/note scheme.
+  - Demo wallet's Railgun address (index 0) holding the funds:
+    `0zk1qy85e6lvyr84hw0t4ks5jv4w8y9py4ld8480duau42vvpyccjfnxkunpd9kxwatwqyn2yu40plq5ux9hd82c3tn43nhmjt2gkte8qp4rc6kwm4jtr3tmz9ajfze`
+  - **Conclusion:** importing the same BIP-39 seed into the official Railgun wallet (railway.xyz)
+    will show the 0.01 ETH and allow a normal unshield to any address.
 
 ## Lesson for this exploration
 
