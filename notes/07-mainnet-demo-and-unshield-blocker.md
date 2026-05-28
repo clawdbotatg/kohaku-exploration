@@ -90,6 +90,10 @@ classic Railgun broadcaster) in the CLI.
     `0zk1qy85e6lvyr84hw0t4ks5jv4w8y9py4ld8480duau42vvpyccjfnxkunpd9kxwatwqyn2yu40plq5ux9hd82c3tn43nhmjt2gkte8qp4rc6kwm4jtr3tmz9ajfze`
   - **Conclusion:** importing the same BIP-39 seed into the official Railgun wallet (railway.xyz)
     will show the 0.01 ETH and allow a normal unshield to any address.
+  - **✅ RESOLVED:** recovery was executed end-to-end, headlessly, via the official
+    `@railgun-community/wallet` SDK — the ETH is back in the recipient's external
+    wallet. Full playbook + obstacles + tx hashes in
+    [08-headless-mainnet-recovery.md](08-headless-mainnet-recovery.md).
 
 ## Lesson for this exploration
 

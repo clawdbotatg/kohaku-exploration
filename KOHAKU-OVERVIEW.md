@@ -20,8 +20,9 @@ browser extension is **Sepolia-testnet only**.
 **Bottom line: do not use Kohaku with real funds on mainnet yet.** Shielding works;
 getting back out does not (via this tooling). Funds shielded this way *are* recoverable
 through the official Railgun wallet — the key derivation is byte-compatible — but the
-Kohaku tooling itself cannot complete the round trip on mainnet. Full evidence + tx
-hashes: [notes/07-mainnet-demo-and-unshield-blocker.md](notes/07-mainnet-demo-and-unshield-blocker.md).
+Kohaku tooling itself cannot complete the round trip on mainnet.
+- Evidence + tx hashes: [notes/07-mainnet-demo-and-unshield-blocker.md](notes/07-mainnet-demo-and-unshield-blocker.md)
+- ✅ Headless recovery playbook (worked, all obstacles + fixes): [notes/08-headless-mainnet-recovery.md](notes/08-headless-mainnet-recovery.md)
 
 ---
 

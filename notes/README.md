@@ -13,6 +13,7 @@ Start with the architecture overview, then dive into whichever layer you need.
 | 05 | [cli.md](05-cli.md) | `kohaku-cli` — the community terminal wallet, end-to-end flows |
 | 06 | [concepts-and-glossary.md](06-concepts-and-glossary.md) | Railgun, Privacy Pools, POI, ASP, ERC-4337/7702, Poseidon/BabyJubJub, Groth16 — primers + glossary |
 | 07 | [mainnet-demo-and-unshield-blocker.md](07-mainnet-demo-and-unshield-blocker.md) | ⚠️ Real-money mainnet demo: shield works, **unshield is blocked** (CLI's 7702 unshield contracts aren't deployed on mainnet) |
+| 08 | [headless-mainnet-recovery.md](08-headless-mainnet-recovery.md) | ✅ Headless recovery via official `@railgun-community/wallet`: the obstacles + the working playbook (ETH back in user's wallet, tx hashes inside) |
 
 ## The one thing to understand first
 
